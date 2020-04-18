@@ -1,0 +1,4 @@
+﻿  Main.cpp
+C:\Users\ar543152\source\repos\SSP\SSP\Main.cpp(1078,175): warning C4244:  'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\ar543152\source\repos\SSP\SSP\Main.cpp(52,20): warning C4101:  'toDelete': unreferenced local variable
+  SSP.vcxproj -> C:\Users\ar543152\source\repos\SSP\Debug\SSP.exe

@@ -1,0 +1,9 @@
+﻿  Main.cpp
+C:\Users\ar543152\source\repos\SSP\SSP\Main.cpp(1078,175): warning C4244:  'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\ar543152\source\repos\SSP\SSP\Main.cpp(52,20): warning C4101:  'toDelete': unreferenced local variable
+  Generating code
+  3 of 317 functions ( 0.9%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    3 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  SSP.vcxproj -> C:\Users\ar543152\source\repos\SSP\Release\SSP.exe

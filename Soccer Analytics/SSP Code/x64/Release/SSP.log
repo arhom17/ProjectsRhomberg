@@ -1,0 +1,20 @@
+﻿  Main.cpp
+C:\Users\ar543152\source\repos\SSP\SSP\Main.cpp(1078,175): warning C4244:  'argument': conversion from 'double' to 'int', possible loss of data
+  Team.cpp
+C:\Users\ar543152\source\repos\SSP\SSP\Main.cpp(52,20): warning C4101:  'toDelete': unreferenced local variable
+C:\Users\ar543152\source\repos\SSP\SSP\Team.cpp(211,9): warning C4244:  'return': conversion from 'const double' to 'int', possible loss of data
+C:\Users\ar543152\source\repos\SSP\SSP\Team.cpp(239,9): warning C4244:  'return': conversion from 'const double' to 'int', possible loss of data
+C:\Users\ar543152\source\repos\SSP\SSP\Team.cpp(263,9): warning C4244:  'return': conversion from 'const double' to 'int', possible loss of data
+C:\Users\ar543152\source\repos\SSP\SSP\Team.cpp(291,9): warning C4244:  'return': conversion from 'const double' to 'int', possible loss of data
+C:\Users\ar543152\source\repos\SSP\SSP\Team.cpp(312,9): warning C4244:  'return': conversion from 'const double' to 'int', possible loss of data
+C:\Users\ar543152\source\repos\SSP\SSP\Team.cpp(340,9): warning C4244:  'return': conversion from 'const double' to 'int', possible loss of data
+C:\Users\ar543152\source\repos\SSP\SSP\Team.cpp(372,9): warning C4244:  'return': conversion from 'const double' to 'int', possible loss of data
+C:\Users\ar543152\source\repos\SSP\SSP\Team.cpp(400,9): warning C4244:  'return': conversion from 'const double' to 'int', possible loss of data
+C:\Users\ar543152\source\repos\SSP\SSP\Team.cpp(424,9): warning C4244:  'return': conversion from 'const double' to 'int', possible loss of data
+C:\Users\ar543152\source\repos\SSP\SSP\Team.cpp(456,9): warning C4244:  'return': conversion from 'const double' to 'int', possible loss of data
+C:\Users\ar543152\source\repos\SSP\SSP\Team.cpp(484,9): warning C4244:  'return': conversion from 'const double' to 'int', possible loss of data
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 317 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  SSP.vcxproj -> C:\Users\ar543152\source\repos\SSP\x64\Release\SSP.exe
