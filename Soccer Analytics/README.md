@@ -1,5 +1,6 @@
 # Soccer Analytics
-# A collection of file relating to the statistical soccer program.
+
+A collection of files relating to the statistical soccer program.
 
 The SSP code file contains the code I wrote in C++ for the soccer computer program.
 
