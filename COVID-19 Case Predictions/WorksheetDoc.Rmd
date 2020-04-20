@@ -1,0 +1,136 @@
+---
+title: "COVID-19 Actual Case Predictions"
+author: "Alexander Rhomberg"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(ggplot2)
+library(ggformula)
+```
+
+## Read Data
+
+```{r Read Data}
+
+### CHANGE DOC NAME ###
+
+confirmed <- read.csv("time_series_covid19_confirmed_US copy.csv")
+deaths <- read.csv("time_series_covid19_deaths_US copy.csv")
+
+confirmed
+deaths
+
+```
+
+## USA
+
+```{r US Deaths by Day}
+
+### ADJUST COLUMN LENGTH ###
+
+colSums(deaths[,c(14:87)]) -> deathSub
+
+as.data.frame(deathSub) -> deathSums
+
+deathSums
+
+```
+
+```{r US Confirmed by Day}
+
+### ADJUST COLUMN LENGTH ###
+
+colSums(confirmed[,c(13:86)]) -> confirmedSub
+
+as.data.frame(confirmedSub) -> confirmedSums
+
+confirmedSums
+
+```
+
+```{r Combined US}
+
+### CHANGE 'TO' DATE ###
+
+bind_cols(deathSums, confirmedSums) -> combinedUS
+
+combinedUS$rate <- combinedUS$deathSub / combinedUS$confirmedSub
+
+combinedUS$Day1 <- (1 / combinedUS$rate) * combinedUS$deathSub
+
+combinedUS$CurrentEstimate <- combinedUS$Day1*(1.2^13) #Ro can be changed
+
+combinedUS$date <- seq(from = as.Date("2020-01-23"), to = as.Date("2020-04-05"), by = 'day')
+
+combinedUS
+
+```
+
+
+## Iowa
+
+```{r IA row check}
+deaths[795:893,]
+
+confirmed[795:893,]
+
+```
+
+```{r IA Deaths by Day}
+
+### ADJUST COLUMN LENGTH ###
+
+colSums(deaths[795:893,c(14:87)]) -> deathSubIA
+
+as.data.frame(deathSubIA) -> deathSumsIA
+
+deathSumsIA
+
+```
+
+```{r IA Confirmed by Day}
+
+### ADJUST COLUMN LENGTH ###
+
+colSums(confirmed[795:893,c(13:86)]) -> confirmedSubIA
+
+as.data.frame(confirmedSubIA) -> confirmedSumsIA
+
+confirmedSumsIA
+
+```
+
+```{r Combined IA}
+
+### CHANGE 'TO' DATE ###
+
+bind_cols(deathSumsIA, confirmedSumsIA) -> combinedIA
+
+combinedIA$rate <- combinedUS$deathSub / combinedUS$confirmedSub #US rate
+
+combinedIA$Day1 <- (1 / combinedIA$rate) * combinedIA$deathSub
+
+combinedIA$CurrentEstimate <- combinedIA$Day1*(1.2^13) #Ro can be changed
+
+combinedIA$date <- seq(from = as.Date("2020-01-23"), to = as.Date("2020-04-05"), by = 'day')
+
+combinedIA
+
+```
+
+
+
+## End
+
+```{r Save Data}
+save(combinedUS, combinedIA, file = "SavedData.rda")
+```
+
+```{r Wrtie Data}
+write.table(combinedUS, file = "combinedUS.csv", sep = ",")
+write.table(combinedIA, file = "combinedIA.csv", sep = ",")
+```
+

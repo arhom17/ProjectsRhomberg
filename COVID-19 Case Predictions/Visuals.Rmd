@@ -1,0 +1,43 @@
+---
+title: "COVID-19 Prediction Visuals"
+author: "Alexander Rhomberg"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(ggformula)
+load("SavedData.rda")
+```
+
+## USA
+
+```{r Graph US}
+combinedUS %>% gf_line(CurrentEstimate ~ date, color = "ORANGE", size = 1.5, title = "Confirmed vs Predicted COVID-19 Cases", caption = ("Red - Confirmed       Orange - Predicted")) %>% gf_line(confirmedSub ~ date, color = "RED", size = 1.5) %>% gf_labs(x = "Date", y = "Amount") 
+```
+
+```{r Table US}
+combinedUS[,5:6] -> estimateUS
+
+names(estimateUS) <- c("Current Estimate", "Date")
+
+estimateUS[65:74,]
+```
+
+
+## IA
+
+```{r Graph IA}
+combinedIA %>% gf_line(CurrentEstimate ~ date, color = "ORANGE", size = 1.5, title = "Confirmed vs Predicted COVID-19 Cases", caption = ("Red - Confirmed       Orange - Predicted")) %>% gf_line(confirmedSubIA ~ date, color = "RED", size = 1.5)  %>% gf_labs(x = "Date", y = "Amount") 
+```
+
+```{r Table IA}
+combinedIA[,5:6] -> estimateIA
+
+names(estimateIA) <- c("Current Estimate", "Date")
+
+estimateIA[65:74,]
+```
