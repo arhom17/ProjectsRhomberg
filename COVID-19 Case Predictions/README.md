@@ -1,7 +1,5 @@
 # COVID-19 Case Prediction Project
 
-A repository for my initial work on a COVID-19 case prediction by location.
-
  In the light of the SARS-CoV-2 outbreak and being forced to continue my studies at home, I have grown increasingly bored and have gained a recent interest in studying the math behind disease outbreaks. Now, when considering any disease there are tons of factors that exist, as we have seen with COVID-19: age, population density, timing, series intervals, etc.
 
 One of the most common ways to look at an outbreak is to use the SIR model, analyzing those who are susceptible, Infected, and Removed (recovered or died). The sum of those should equal the population as a whole. An important number to note with any disease is R0, the rate at which the disease spreads. If R0 is < 1, the disease spreads too slow and will die out, but a R0 > 1 will see a growth.
