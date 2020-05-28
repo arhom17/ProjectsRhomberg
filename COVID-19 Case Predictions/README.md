@@ -18,6 +18,14 @@ While there are many other factors that go into disease forecasting, this is jus
 
 By: Alex Rhomberg
 
+Files:
+COVID-19 Actual Cases Prediction is the original excel file used for analysis and predictions.
+COVID-19 Case Predictions is an updated and more statistically accurate version of the predictions. 
+Visuals contains the code used to create initial visuals.
+WorksheetDoc is the R code used to clean and organize the data.
+The combinedIA and combinedUS were files used for the R code.
+The time series files were pulled from John Hopkins Univeristy and were my raw data files.
+
 Sources:
 Tomas Pueyo: https://medium.com/…/coronavirus-act-today-or-people-will-d…
 COVID-19 Death Rate USA: 2,384 / 135,502 = 1.76%: https://www.google.com/covid19-map/
