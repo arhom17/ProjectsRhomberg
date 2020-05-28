@@ -19,6 +19,7 @@ While there are many other factors that go into disease forecasting, this is jus
 By: Alex Rhomberg
 
 Files:
+
 COVID-19 Actual Cases Prediction is the original excel file used for analysis and predictions.
 
 COVID-19 Case Predictions is an updated and more statistically accurate version of the predictions. 
@@ -32,9 +33,15 @@ The combinedIA and combinedUS were files used for the R code.
 The time series files were pulled from John Hopkins Univeristy and were my raw data files.
 
 Sources:
+
 Tomas Pueyo: https://medium.com/…/coronavirus-act-today-or-people-will-d…
+
 COVID-19 Death Rate USA: 2,384 / 135,502 = 1.76%: https://www.google.com/covid19-map/
+
 COVID-19 Recovery Rate USA: 4,378 / 135,502 = 3.23%: https://www.google.com/covid19-map/
+
 Confirmed Cases in Iowa: 472: https://idph.iowa.gov/Emerging-Health-Iss…/Novel-Coronavirus
+
 Confirmed Deaths in Iowa: 7: https://www.worldometers.info/coronavirus/country/us/
+
 R0 believed to be 1.5 to 3.5: https://labblog.uofmhealth.org/…/how-scientists-quantify-in…
