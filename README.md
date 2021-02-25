@@ -1,7 +1,7 @@
 # Alexander Rhomberg Projects
 
-This repository serves as a collection of personal projects I have worked on over the years to gain a greater insight in my field of study.
+This repository serves as a collection of projects I have worked on over the years to gain a greater insight in my field of study.
 
-Each folder contains data files from personal projects I have worked on. Some of them have gone on to be used for school projects, but a majority of the initial work was done on my own time. 
+Each folder contains data files from personal and school projects I have worked on. Included in each folder is a README file that gives some information about the project.  
 
 Linked In: https://www.linkedin.com/in/alexander-rhomberg/
