@@ -1,7 +1,0 @@
-Price,D,4,vhigh,high,med,low
-Maint,D,4,vhigh,high,med,low
-Doors,C,2,5,X,X,X
-Persons,C,2,4,X,X,X
-Boot,D,3,small,med,big,X
-Safety,D,3,low,med,high,X 	
-Class,D,4,unacc,acc,good,vgood
