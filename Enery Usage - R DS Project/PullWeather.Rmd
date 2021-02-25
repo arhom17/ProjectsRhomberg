@@ -1,0 +1,45 @@
+---
+title: "Pull Weather Data"
+author: "Rhomberg w/ Rissler Source Code"
+date: "12/4/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(purrr)
+library(darksky)
+library(lubridate)
+library(ggformula)
+```
+
+```{r setKey}
+#darksky_api_key()
+
+#get_current_forecast(42.5022,-90.692)
+```
+
+```{r pull}
+#temp <- seq(mdy("4/30/2018"), mdy("10/24/2019"), by= 'days') %>% map(~get_forecast_for(42.5022,-90.692, .x)) 
+  
+#temp %>% map_df("hourly") -> WeatherRaw
+
+WeatherRaw %>% mutate(time = ymd_hms(time)) -> WeatherRaw
+
+WeatherRaw %>% mutate(year = lubridate::year(time), month = lubridate::month(time), day = lubridate::day(time), hour = lubridate::hour(time), minute = lubridate::minute(time), second = lubridate::second(time)) -> WeatherRaw
+
+```
+
+```{r pull2}
+ temp <- seq(mdy("8/1/2016"), mdy("11/1/2019"), by= 'months') %>%
+  map(~get_forecast_for(42.5022,-90.692, .x)) 
+  
+temp %>% map_df("hourly") -> WeatherRaw2
+```
+
+```{r writeOut}
+
+save(WeatherRaw, WeatherRaw2, file = "Weather.Rda")
+
+```
