@@ -1,0 +1,48 @@
+---
+title: "Dropped Graphs"
+author: "Christian Giacotto"
+output: html_document
+---
+```{r setup, include=FALSE}
+## Make sure these are installed first
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(ggformula)
+library(readxl)
+library(readr)
+```
+
+```{r MELT 2016}
+clean2016 %>%  group_by(flg_NetDep, Dropped) %>% 
+  count() %>% spread(Dropped, n)
+
+# 326/336 is who stayed = 0.9702381
+```
+
+```{r MELT 2017}
+clean2017 %>%  group_by(flg_NetDep, Dropped) %>% 
+  count() %>% spread(Dropped, n)
+
+# 332/339 is who stayed = 0.97935103
+```
+
+```{r MELT 2018}
+clean2018 %>%  group_by(flg_NetDep, Dropped) %>% 
+  count() %>% spread(Dropped, n)
+
+# 356/368 is who stayed = 0.9673913
+```
+
+```{r MELT 2019}
+clean2019 %>%  group_by(flg_NetDep, Dropped) %>% 
+  count() %>% spread(Dropped, n)
+
+# 324/330 is who stayed = 0.98181818
+```
+
+```{r MELT Master}
+MasterMelt %>% group_by(flg_NetDep, Dropped) %>% count() %>% spread(Dropped, n)
+
+# 1338/1373 = 0.97450838
+```
+

@@ -1,0 +1,156 @@
+---
+title: "Final Melt Presentation"
+author: "Alex, Gio, Arias"
+date: "11/15/2019"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+library(ggformula)
+library(readxl)
+library(readr)
+library(lubridate)
+load("CleanData.rda")
+load("CleanWeatherData.rda")
+```
+
+## MELT 2016
+
+```{r MELT 2016}
+clean2016 %>%  group_by(flg_NetDep, Dropped) %>% 
+  count() %>% spread(Dropped, n)
+```
+326/336 is who stayed = 0.9702381
+
+## Apparent Temp 2016
+
+```{r Apparent Temp 2016}
+cleanWeather2016 %>% gf_point(apparentTemperature ~ HOUR, color = ~ month(time)) %>% gf_smooth(apparentTemperature~HOUR, method = loess, colorse = TRUE) %>% gf_facet_wrap(~month(time))
+```
+
+## Humidity 2016 A
+
+```{r Humidity 2016a}
+cleanWeather2016 %>% gf_point(humidity ~ HOUR, color = ~ month(time)) %>% gf_smooth(humidity~HOUR, method = loess, colorse = TRUE) %>% gf_facet_wrap(~month(time))
+```
+
+## Humidity 2016 B
+
+```{r Humidity 2016b}
+cleanWeather2016 %>% gf_point(humidity ~ windSpeed, color = ~ month(time)) %>% gf_smooth(humidity~windSpeed, method = loess, colorse = TRUE) %>% gf_facet_wrap(~month(time))
+```
+
+## 2016 Overview
+
+- Second most amount of people left (10).
+- Apparent temperature from 10:00AM to 08:00PM was above 90F.
+- Many nights with high humidity.
+- Little wind throughout the days.
+
+
+## MELT 2017
+
+```{r MELT 2017}
+clean2017 %>%  group_by(flg_NetDep, Dropped) %>% 
+  count() %>% spread(Dropped, n)
+```
+332/339 is who stayed = 0.97935103
+
+## Apparent Temp 2017
+
+```{r Apparent Temp 2017}
+cleanWeather2017 %>% gf_point(apparentTemperature ~ HOUR, color = ~ month(time)) %>% gf_smooth(apparentTemperature~HOUR, method = loess, colorse = TRUE) %>% gf_facet_wrap(~month(time))
+```
+
+## Humidity 2017 A
+
+```{r Humidity 2017a}
+cleanWeather2017 %>% gf_point(humidity ~ HOUR, color = ~ month(time)) %>% gf_smooth(humidity~HOUR, method = loess, colorse = TRUE) %>% gf_facet_wrap(~month(time))
+```
+
+## Humidity 2017 B
+
+```{r Humidity 2017b}
+cleanWeather2017 %>% gf_point(humidity ~ windSpeed, color = ~ month(time)) %>% gf_smooth(humidity~windSpeed, method = loess, colorse = TRUE) %>% gf_facet_wrap(~month(time))
+```
+
+
+## 2017 Overview
+
+- Only 7 people decided to drop.
+- Apparent temperatures ranged from 46F to 87F in the two months.
+- Many nights and mornings with high humidity.
+- Light wind throughout the days.
+
+
+
+## MELT 2018
+
+```{r MELT 2018}
+clean2018 %>%  group_by(flg_NetDep, Dropped) %>% 
+  count() %>% spread(Dropped, n)
+```
+356/368 is who stayed = 0.9673913
+
+## Apparent Temp 2018
+
+```{r Apparent Temp 2018}
+cleanWeather2018 %>% gf_point(apparentTemperature ~ HOUR, color = ~ month(time)) %>% gf_smooth(apparentTemperature~HOUR, method = loess, colorse = TRUE) %>% gf_facet_wrap(~month(time))
+```
+
+## Humidity 2018 A
+
+```{r Humidity 2018a}
+cleanWeather2018 %>% gf_point(humidity ~ HOUR, color = ~ month(time)) %>% gf_smooth(humidity~HOUR, method = loess, colorse = TRUE) %>% gf_facet_wrap(~month(time))
+```
+
+## Humidity 2018 B
+
+```{r Humidity 2018b}
+cleanWeather2018 %>% gf_point(humidity ~ windSpeed, color = ~ month(time)) %>% gf_smooth(humidity~windSpeed, method = loess, colorse = TRUE) %>% gf_facet_wrap(~month(time))
+```
+
+
+## 2018 Overview
+
+- The most amount of people left (12).
+- High appaarent tempertatures.
+- Humidity was above 80% most days.
+- Wind was below 10 most days.
+
+
+## MELT 2019
+
+```{r MELT 2019}
+clean2019 %>%  group_by(flg_NetDep, Dropped) %>% 
+  count() %>% spread(Dropped, n)
+```
+324/330 is who stayed = 0.98181818
+
+## Apparent Temp 2019
+
+```{r Apparent Temp 2019}
+cleanWeather2019 %>% gf_point(apparentTemperature ~ HOUR, color = ~ month(time)) %>% gf_smooth(apparentTemperature~HOUR, method = loess, colorse = TRUE) %>% gf_facet_wrap(~month(time))
+```
+
+## Humidity 2019 A
+
+```{r Humidity 2019a}
+cleanWeather2019 %>% gf_point(humidity ~ HOUR, color = ~ month(time)) %>% gf_smooth(humidity~HOUR, method = loess, colorse = TRUE) %>% gf_facet_wrap(~month(time))
+```
+
+## Humidity 2019 B
+
+```{r Humidity 2019b}
+cleanWeather2019 %>% gf_point(humidity ~ windSpeed, color = ~ month(time)) %>% gf_smooth(humidity~windSpeed, method = loess, colorse = TRUE) %>% gf_facet_wrap(~month(time))
+```
+
+
+## 2019 Overview
+
+- Only 6 people decided to drop.
+- Apparent temperatures during the day ranged from 70F to 88F in the two months.
+- The days saw low humidity.
+- Humidity did not seem to have a huge impact.

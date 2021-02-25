@@ -1,0 +1,134 @@
+---
+title: "FinalMelt"
+author: "Rhomberg, Giacotto, Arias"
+date: "11/6/2019"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(ggformula)
+library(readxl)
+library(readr)
+library(lubridate)
+load("CleanData.rda")
+load("CleanWeatherData.rda")
+```
+
+
+## 2016
+
+```{r MELT 2016}
+clean2016 %>%  group_by(flg_NetDep, Dropped) %>% 
+  count() %>% spread(Dropped, n)
+
+# 326/336 is who stayed = 0.9702381
+```
+
+```{r Apparent Temp 2016}
+cleanWeather2016 %>% gf_point(apparentTemperature ~ HOUR, color = ~ month(time)) %>% gf_smooth(apparentTemperature~HOUR, method = loess, colorse = TRUE) %>% gf_facet_wrap(~month(time))
+```
+
+```{r Humidity 2016a}
+cleanWeather2016 %>% gf_point(humidity ~ HOUR, color = ~ month(time)) %>% gf_smooth(humidity~HOUR, method = loess, colorse = TRUE) %>% gf_facet_wrap(~month(time))
+```
+
+```{r Humidity 2016b}
+cleanWeather2016 %>% gf_point(humidity ~ windSpeed, color = ~ month(time)) %>% gf_smooth(humidity~windSpeed, method = loess, colorse = TRUE) %>% gf_facet_wrap(~month(time))
+```
+
+ Year 2016 saw the second most amount of people leave from Loras at a total of 10. In looking at the apparent temperature for the months of August and September, the hours from 10:00am to 08:00pm saw apparent temperatures above 90 degrees F. These hours also saw the lowest wind speeds, which makes for an extremely uncomfortable living experience. The nights and into the mornings saw high humidity levels with apparent temperatures around the 70 degree F mark. With humid nights into hot and stale afternoons, and no air conditioning in the residence halls, it is no surprise that 10 students decided to leave. 
+ 
+```{r Mean of AppTemp by Hour 2016}
+cleanWeather2016 %>% group_by(HOUR) %>% summarise(MeanTemp=mean(apparentTemperature))
+```
+
+
+
+## 2017
+
+```{r MELT 2017}
+clean2017 %>%  group_by(flg_NetDep, Dropped) %>% 
+  count() %>% spread(Dropped, n)
+
+# 332/339 is who stayed = 0.97935103
+```
+
+```{r Apparent Temp 2017}
+cleanWeather2017 %>% gf_point(apparentTemperature ~ HOUR, color = ~ month(time)) %>% gf_smooth(apparentTemperature~HOUR, method = loess, colorse = TRUE) %>% gf_facet_wrap(~month(time))
+```
+
+```{r Humidity 2017a}
+cleanWeather2017 %>% gf_point(humidity ~ HOUR, color = ~ month(time)) %>% gf_smooth(humidity~HOUR, method = loess, colorse = TRUE) %>% gf_facet_wrap(~month(time))
+```
+
+```{r Humidity 2017b}
+cleanWeather2017 %>% gf_point(humidity ~ windSpeed, color = ~ month(time)) %>% gf_smooth(humidity~windSpeed, method = loess, colorse = TRUE) %>% gf_facet_wrap(~month(time))
+```
+
+2017 was the second year with the lowest percentage of people who dropped with only 7 of the 339 leaving for a 2.064897% drop rate. As for temperature, August is a more regular month with apparent temperatures that go from 54F to 82F, compare to September's apparent temperatures that range from 46F to 87F. Humidity is also a factor that bother students a lot, specially when they want to enjoy their days spending time outside. For both months, the trend is basically very humid mornings and nights. August is overall more humid. Wind is a factor that can help with humid days because it may refresh the environment every once and then. The problem is that in both months, there's a trend that shows that the days with the highest humidity percentage, were the ones with the lowest wind speed. Therefore, really humid days came with almost no wind at all which probably made the apparent temperatures higher.
+
+```{r Mean of AppTemp by Hour 2017}
+cleanWeather2017 %>% group_by(HOUR) %>% summarise(MeanTemp=mean(apparentTemperature))
+```
+
+## 2018
+
+```{r MELT 2018}
+clean2018 %>%  group_by(flg_NetDep, Dropped) %>% 
+  count() %>% spread(Dropped, n)
+
+# 356/368 is who stayed = 0.9673913
+```
+
+```{r Apparent Temp 2018}
+cleanWeather2018 %>% gf_point(apparentTemperature ~ HOUR, color = ~ month(time)) %>% gf_smooth(apparentTemperature~HOUR, method = loess, colorse = TRUE) %>% gf_facet_wrap(~month(time))
+```
+
+```{r Humidity 2018a}
+cleanWeather2018 %>% gf_point(humidity ~ HOUR, color = ~ month(time)) %>% gf_smooth(humidity~HOUR, method = loess, colorse = TRUE) %>% gf_facet_wrap(~month(time))
+```
+
+```{r Humidity 2018b}
+cleanWeather2018 %>% gf_point(humidity ~ windSpeed, color = ~ month(time)) %>% gf_smooth(humidity~windSpeed, method = loess, colorse = TRUE) %>% gf_facet_wrap(~month(time))
+```
+
+In 2018 we found that 96% of students that stayed at Loras. This may have been due to majority of the days, humidity was at a level higher than 80%, along with the humidity. The windspeed, when there is a high humidity level, was on average below 10. 
+
+```{r Mean of AppTemp by Hour 2018}
+cleanWeather2018 %>% group_by(HOUR) %>% summarise(MeanTemp=mean(apparentTemperature))
+```
+
+## 2019
+
+```{r MELT 2019}
+clean2019 %>%  group_by(flg_NetDep, Dropped) %>% 
+  count() %>% spread(Dropped, n)
+
+# 324/330 is who stayed = 0.98181818
+```
+
+```{r Apparent Temp 2019}
+cleanWeather2019 %>% gf_point(apparentTemperature ~ HOUR, color = ~ month(time)) %>% gf_smooth(apparentTemperature~HOUR, method = loess, colorse = TRUE) %>% gf_facet_wrap(~month(time))
+```
+
+```{r Humidity 2019a}
+cleanWeather2019 %>% gf_point(humidity ~ HOUR, color = ~ month(time)) %>% gf_smooth(humidity~HOUR, method = loess, colorse = TRUE) %>% gf_facet_wrap(~month(time))
+```
+
+```{r Humidity 2019b}
+cleanWeather2019 %>% gf_point(humidity ~ windSpeed, color = ~ month(time)) %>% gf_smooth(humidity~windSpeed, method = loess, colorse = TRUE) %>% gf_facet_wrap(~month(time))
+```
+
+2019 saw the least amount of people leave within the four year analysis with a total of 6. This could be in part due to the low highs averaging throughout the day for the apparent temperatures in August and September. While the average humidity levels remained high through some days, other saw drops. Along with low wind speeds and high humidity, living conditions could be uncomfortable for some, but as it can be seen, a mojority of the people were able to push through the discomfort and remain at Loras.
+
+```{r Mean of AppTemp by Hour 2019}
+cleanWeather2019 %>% group_by(HOUR) %>% summarise(MeanTemp=mean(apparentTemperature))
+```
+
+Final Thoughts
+
+Overall, it can be seen that the hotter years of 2016 and 2018 saw more people drop out, but the numbers between the other years were not extreme. There could be other factors that impacted this, but the weather definitely follows a trend of being hotter on average with more students having dropped out. 

@@ -1,0 +1,36 @@
+---
+title: "WeatherGraphs"
+author: "Alex Rhomberg"
+date: "10/25/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(ggformula)
+```
+
+## Weather Graphs
+
+```{r Apparent Temp 2016}
+cleanWeather2016 %>% gf_point(apparentTemperature ~ HOUR, color = ~ month(time)) %>% gf_smooth(apparentTemperature~HOUR, method = loess, colorse = TRUE) %>% gf_facet_wrap(~month(time))
+```
+
+```{r Apparent Temp 2017}
+cleanWeather2017 %>% gf_point(apparentTemperature ~ HOUR, color = ~ month(time)) %>% gf_smooth(apparentTemperature~HOUR, method = loess, colorse = TRUE) %>% gf_facet_wrap(~month(time))
+```
+
+```{r Apparent Temp 2018}
+cleanWeather2018 %>% gf_point(apparentTemperature ~ HOUR, color = ~ month(time)) %>% gf_smooth(apparentTemperature~HOUR, method = loess, colorse = TRUE) %>% gf_facet_wrap(~month(time))
+```
+
+```{r Apparent Temp 2019}
+cleanWeather2019 %>% gf_point(apparentTemperature ~ HOUR, color = ~ month(time)) %>% gf_smooth(apparentTemperature~HOUR, method = loess, colorse = TRUE) %>% gf_facet_wrap(~month(time))
+```
+
+```{r Apparent Temp Master}
+MasterWeather %>% gf_point(apparentTemperature ~ HOUR, color = ~ month(time)) %>% gf_smooth(apparentTemperature~HOUR, method = loess, colorse = TRUE) %>% gf_facet_wrap(~month(time))
+```
+
+

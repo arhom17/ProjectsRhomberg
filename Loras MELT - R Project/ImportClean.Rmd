@@ -1,0 +1,95 @@
+---
+title: "ImportClean"
+author: "Alex Rhomberg"
+date: "10/11/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+## Make sure these are installed first
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(ggplot2)
+library(readxl)
+library(readr)
+```
+
+
+## Import Data
+
+```{r Import}
+Dictionary <- read_excel("raw_data/Dictionary.xlsx")
+
+
+Fall_2016_OFCT_FYFA16 <- read_csv("raw_data/Fall_2016_OFCT_FYFA16.csv")
+
+
+Fall_2016_Pre_Launch_Snapshot8122016 <- read_csv("raw_data/Fall_2016_Pre_Launch_Snapshot8122016.csv")
+
+
+Fall_2017_OFCT_FYFA17 <- read_csv("raw_data/Fall_2017_OFCT_FYFA17.csv")
+
+
+Fall_2017_Pre_Launch_Snapshot8112017 <- read_csv("raw_data/Fall_2017_Pre_Launch_Snapshot8112017.csv")
+
+Fall_2018_OFCT_FYFA18 <- read_csv("raw_data/Fall_2018_OFCT_FYFA18.csv")
+
+
+Fall_2018_Pre_Launch_Snapshot8102018 <- read_csv("raw_data/Fall_2018_Pre_Launch_Snapshot8102018.csv")
+
+
+Fall_2019_OFCT_FYFA19 <- read_csv("raw_data/Fall_2019_OFCT_FYFA19.csv")
+
+
+
+Fall_2019_Pre_Launch_Snapshot8092019 <- read_csv("raw_data/Fall_2019_Pre_Launch_Snapshot8092019.csv")
+
+```
+
+## Merge datasets
+```{r Merge}
+clean2016 <- merge(x = Fall_2016_OFCT_FYFA16, y = Fall_2016_Pre_Launch_Snapshot8122016, by = "Random_ID", all.y = TRUE)
+
+clean2017 <- merge(x = Fall_2017_OFCT_FYFA17, y = Fall_2017_Pre_Launch_Snapshot8112017, by = "Random_ID", all.y = TRUE)
+
+clean2018 <- merge(x = Fall_2018_OFCT_FYFA18, y = Fall_2018_Pre_Launch_Snapshot8102018, by = "Random_ID", all.y = TRUE)
+
+clean2019 <- merge(x = Fall_2019_OFCT_FYFA19, y = Fall_2019_Pre_Launch_Snapshot8092019, by = "Random_ID", all.y = TRUE)
+
+```
+
+## Add a column
+```{r Add Column for Dropped}
+clean2016$Dropped <- ifelse(is.na(clean2016$STU.MISC3), TRUE, FALSE)
+
+clean2017$Dropped <- ifelse(is.na(clean2017$STU.MISC3), TRUE, FALSE)
+
+clean2018$Dropped <- ifelse(is.na(clean2018$STU.MISC3), TRUE, FALSE)
+
+clean2019$Dropped <- ifelse(is.na(clean2019$STU.MISC3), TRUE, FALSE)
+
+```
+
+```{r Create a master set}
+MasterMelt <- bind_rows(clean2016, clean2017, clean2018, clean2019)
+```
+
+```{r Run this to save}
+
+save(clean2016, clean2017, clean2018, clean2019, file = "CleanData.rda")
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
