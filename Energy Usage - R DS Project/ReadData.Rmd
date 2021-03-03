@@ -1,0 +1,90 @@
+---
+title: "Read Data"
+author: "Alex Rhomberg"
+date: "11/30/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(ggformula)
+library(lubridate)
+```
+
+```{r loadFromAlliant}
+
+FromAlliant <- dir("RawData/Alliant/FromAlliant/", full.names = TRUE)
+
+FromAlliant %>% 
+
+  map_df(read_csv, skip=13) -> FromAlliantConsumptionRaw
+
+FromAlliantConsumptionRaw %>% distinct() -> FromAlliantConsumptionRaw 
+
+FromAlliantConsumptionRaw[2:52577,] -> FromAlliantConsumptionRaw
+
+names(FromAlliantConsumptionRaw) <- c("DATETIME", "USAGE", "X3", "X4")
+
+FromAlliantConsumptionRaw %>% separate(DATETIME, into = c("STARTTIME", "ENDTIME"), sep = " to ") -> FromAlliantConsumptionRaw
+
+FromAlliantConsumptionRaw %>% mutate(STARTTIME = ymd_hm(STARTTIME), ENDTIME = ymd_hm(ENDTIME)) %>% mutate(USAGE = parse_double(USAGE)) -> FromAlliantConsumptionRaw
+
+FromAlliantConsumptionRaw %>% mutate(year = lubridate::year(STARTTIME), month = lubridate::month(STARTTIME), day = lubridate::day(STARTTIME), hour = lubridate::hour(STARTTIME), minute = lubridate::minute(STARTTIME)) -> FromAlliantConsumptionRaw
+
+```
+
+```{r loadToAlliant}
+
+ToAlliant <- dir("RawData/Alliant/FromAlliant/", full.names = TRUE)
+
+ToAlliant %>% 
+
+  map_df(read_csv, skip=13) -> ToAlliantConsumptionRaw
+
+ToAlliantConsumptionRaw %>% distinct() -> ToAlliantConsumptionRaw 
+
+ToAlliantConsumptionRaw[2:52577,] -> ToAlliantConsumptionRaw
+
+names(ToAlliantConsumptionRaw) <- c("DATETIME", "USAGE", "X3", "X4")
+
+ToAlliantConsumptionRaw %>% separate(DATETIME, into = c("STARTTIME", "ENDTIME"), sep = " to ") -> ToAlliantConsumptionRaw
+
+ToAlliantConsumptionRaw %>% mutate(STARTTIME = ymd_hm(STARTTIME), ENDTIME = ymd_hm(ENDTIME)) %>% mutate(USAGE = parse_double(USAGE)) -> ToAlliantConsumptionRaw
+
+ToAlliantConsumptionRaw %>% mutate(year = lubridate::year(STARTTIME), month = lubridate::month(STARTTIME), day = lubridate::day(STARTTIME), hour = lubridate::hour(STARTTIME), minute = lubridate::minute(STARTTIME)) -> ToAlliantConsumptionRaw
+
+```
+
+```{r loadEnphase}
+
+Enphase <- dir("RawData/Enphase/", full.names = TRUE)
+
+Enphase %>% 
+
+  map_df(read_csv) -> EnphaseRaw
+
+EnphaseRaw %>% distinct() -> EnphaseRaw 
+
+names(EnphaseRaw) <- c("DATETIME", "EnergyProduced", "EnergyConsumed", "ExportedToGrid", "ImportedToGrid" )
+
+EnphaseRaw %>% mutate(DATETIME = ymd_hms(DATETIME, tz = "America/Chicago")) -> EnphaseRaw
+
+EnphaseRaw %>% mutate(year = lubridate::year(DATETIME), month = lubridate::month(DATETIME), day = lubridate::day(DATETIME), hour = lubridate::hour(DATETIME), minute = lubridate::minute(DATETIME)) -> EnphaseRaw
+
+```
+
+```{r loadRissler}
+
+names(Rissler_955_Kirkwood_St) <- c("Month", "TotalUsage", "UsageGrid", "PeakUsage", "OffPeakUsage", "ProductionToGrid", "PeakPush", "OffPeakPush", "SolarProduction", "Bill", "WaterHeater", "SolarPanels", "c13", "c14", "c15", "c16")
+
+```
+
+
+```{r Save}
+
+save(FromAlliantConsumptionRaw, ToAlliantConsumptionRaw, EnphaseRaw, Rissler_955_Kirkwood_St, file = "Data.Rda")
+
+```
+
+
