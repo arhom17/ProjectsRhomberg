@@ -1,13 +1,2 @@
 # Soccer Analytics
-
-
-Developed a computer program in C++ working along side the Loras College soccer coach to use for game statistic tracking. The program allows for data collection which will be altered at a later time for various analytical purposes.
-
-
-A collection of files relating to the statistical soccer program.
-
-The SSP code file contains the code I wrote in C++ for the soccer computer program.
-
-The Presentation file is a PDF of the final presentation given by myself and group members for a class. 
-
-The SSP file contains the needed compnents to run the code in a terminal. 
+The Loras Soccer Analytics Program came about after I completed an advanced course in C++ programming, and gained a growing interest in sports analytics. I spent most of the following summer creating a program in C++ that would input a player roster from a text document, allow a user to manually enter statistics in a simplified format as the game occurred, and output them at the end of the game in a csv format. I was also teaching myself the basics of R at the time, and eventually grew comfortable enough with the ggplot2 package to create visualizations for a presentation and analysis that the coach was able to use for the following season. The screen shot to the right is a visualization showing the success rate offensive pressure had throughout the season, one of the many stats that was looked at.
