@@ -5,3 +5,4 @@ This repository serves as a collection of projects I have worked on over the yea
 Each folder contains data files from personal and school projects I have worked on. Included in each folder is a README file that gives some information about the project.  
 
 Linked In: https://www.linkedin.com/in/alexander-rhomberg/
+Portfolio: https://alex-rhomberg.weebly.com/
